@@ -1,0 +1,310 @@
+[
+  {
+    "name": "Accenture",
+    "evidenceUrl": "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers/job/Custom-Software-Engineer_ATCI-5394242-S1967951-1",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers"
+  },
+  {
+    "name": "Apple",
+    "evidenceUrl": "https://jobs.apple.com/en-in/search?location=india-INDC",
+    "source": "Official employer careers",
+    "region": "Hyderabad",
+    "careerUrl": "https://jobs.apple.com/en-in/search?location=india-INDC"
+  },
+  {
+    "name": "Atlassian",
+    "evidenceUrl": "https://www.atlassian.com/company/careers/details/25569",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://www.atlassian.com/company/careers/all-jobs"
+  },
+  {
+    "name": "Autodesk",
+    "evidenceUrl": "https://autodesk.wd1.myworkdayjobs.com/en-US/Ext/job/Software-Engineer_26WD96707-1",
+    "source": "Official employer careers",
+    "region": "Pune",
+    "careerUrl": "https://autodesk.wd1.myworkdayjobs.com/en-US/Ext"
+  },
+  {
+    "name": "Barclays",
+    "evidenceUrl": "https://search.jobs.barclays/employment/pune-maharashtra-india-development-and-engineering-jobs/22545/79683/1269750-1264418-8133375-1259229/4",
+    "source": "Official employer careers",
+    "region": "Pune",
+    "careerUrl": "https://search.jobs.barclays/employment/pune-maharashtra-india-development-and-engineering-jobs/22545/79683/1269750-1264418-8133375-1259229/4"
+  },
+  {
+    "name": "BNY",
+    "evidenceUrl": "https://eofe.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/BNY-Careers/jobs?location=Pune%252C+Maharashtra%252C+India&locationId=300000028474391&locationLevel=city&mode=location&radius=25&radiusUnit=MI",
+    "source": "Official employer careers",
+    "region": "Pune",
+    "careerUrl": "https://eofe.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/BNY-Careers/jobs"
+  },
+  {
+    "name": "C-DAC",
+    "evidenceUrl": "https://www.cdac.in/index.aspx?id=job_PE_eGOV-SSD",
+    "source": "Official employer careers",
+    "region": "Pune",
+    "careerUrl": "https://cdac.in/?id=current_jobs"
+  },
+  {
+    "name": "Capgemini",
+    "evidenceUrl": "https://careers.capgemini.com/job/Pune-Java-Fullstack-Developer-%28Java-%2B-Angular-ReactJS%29/1454524433/",
+    "source": "Official employer careers",
+    "region": "Pune",
+    "careerUrl": "https://careers.capgemini.com/search/"
+  },
+  {
+    "name": "Cisco",
+    "evidenceUrl": "https://cisco.wd5.myworkdayjobs.com/Cisco_Careers/job/Bangalore-India/Software-Engineer_2028523-1",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://cisco.wd5.myworkdayjobs.com/Cisco_Careers"
+  },
+  {
+    "name": "Citi",
+    "evidenceUrl": "https://jobs.citi.com/job/pune/senior-engineer-java-full-stack/287/103150126016",
+    "source": "Official employer careers",
+    "region": "Pune",
+    "careerUrl": "https://jobs.citi.com/search-jobs"
+  },
+  {
+    "name": "Cloudflare",
+    "evidenceUrl": "https://www.cloudflare.com/en-gb/careers/jobs/",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://www.cloudflare.com/en-gb/careers/jobs/"
+  },
+  {
+    "name": "Cognizant",
+    "evidenceUrl": "https://careers.cognizant.com/india-en/jobs/00070589513/senior-java-perl-developer/",
+    "source": "Official employer careers",
+    "region": "Chennai",
+    "careerUrl": "https://careers.cognizant.com/india-en/jobs/"
+  },
+  {
+    "name": "EPAM",
+    "evidenceUrl": "https://careers.epam.com/en/vacancy/lead-senior-software-engineering-ai-solution-engineering-blttne2tnsdwoknu5nh_en",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://www.epam.com/careers/job-listings"
+  },
+  {
+    "name": "Freshworks",
+    "evidenceUrl": "https://jobs.smartrecruiters.com/Freshworks/744000160816709-lead-solution-engineer",
+    "source": "Official employer careers",
+    "region": "Chennai",
+    "careerUrl": "https://careers.smartrecruiters.com/Freshworks"
+  },
+  {
+    "name": "GlobalLogic",
+    "evidenceUrl": "https://www.globallogic.com/in/career-search-page/",
+    "source": "Official employer careers",
+    "region": "Noida",
+    "careerUrl": "https://www.globallogic.com/in/career-search-page/"
+  },
+  {
+    "name": "Goldman Sachs",
+    "evidenceUrl": "https://higher.gs.com/roles/188067",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://higher.gs.com/results"
+  },
+  {
+    "name": "Google",
+    "evidenceUrl": "https://www.google.com/about/careers/applications/jobs/results/143097213772276422-senior-software-engineer-infrastructure-google-cloud?location=India",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://www.google.com/about/careers/applications/jobs/results/?location=India"
+  },
+  {
+    "name": "HCLTech",
+    "evidenceUrl": "https://careers.hcltech.com/job/Senior-Full-Stack-Developer/172652-en_US/",
+    "source": "Official employer careers",
+    "region": "Noida",
+    "careerUrl": "https://careers.hcltech.com/search/"
+  },
+  {
+    "name": "HSBC",
+    "evidenceUrl": "https://apply.careers.hsbc.com/job/Pune-Sr_-Associate-Director%2C-Software-Engineering-MH-411006/1377332057/",
+    "source": "Official employer careers",
+    "region": "Pune",
+    "careerUrl": "https://apply.careers.hsbc.com/search/"
+  },
+  {
+    "name": "IBM",
+    "evidenceUrl": "https://www.ibm.com/in-en/careers/search?q=software",
+    "source": "Official employer careers",
+    "region": "Kochi",
+    "careerUrl": "https://www.ibm.com/in-en/careers/search?q=software"
+  },
+  {
+    "name": "IBS Software",
+    "evidenceUrl": "https://www.ibsplc.com/news/ibs-launches-its-state-of-the-art-cochin-office-campus",
+    "source": "Official employer careers",
+    "region": "Kochi",
+    "careerUrl": "https://fa-etbm-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/"
+  },
+  {
+    "name": "In Time Tec",
+    "evidenceUrl": "https://www.intimetec.com/hubfs/24July_DataScience_CapabilityStatements.pdf",
+    "source": "Official employer careers",
+    "region": "Jaipur",
+    "careerUrl": "https://careers.intimetec.in/"
+  },
+  {
+    "name": "Infosys",
+    "evidenceUrl": "https://career.infosys.com/jobs?countrycode=IN",
+    "source": "Official employer careers",
+    "region": "India",
+    "careerUrl": "https://career.infosys.com/jobs?countrycode=IN"
+  },
+  {
+    "name": "Intuit",
+    "evidenceUrl": "https://jobs.intuit.com/employment/bengaluru-karnataka-india-software-engineering-jobs/27595/68357/1269750-1267701-1277331-1277333/4",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://jobs.intuit.com/employment/bengaluru-karnataka-india-software-engineering-jobs/27595/68357/1269750-1267701-1277331-1277333/4"
+  },
+  {
+    "name": "JPMorgan Chase",
+    "evidenceUrl": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210807341",
+    "source": "Official employer careers",
+    "region": "Hyderabad",
+    "careerUrl": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/jobs?location=India&locationId=300000000289360&locationLevel=country&mode=location"
+  },
+  {
+    "name": "Kovai.co",
+    "evidenceUrl": "https://www.kovai.co/careers/",
+    "source": "Official employer careers",
+    "region": "Coimbatore",
+    "careerUrl": "https://careers.kovai.co/"
+  },
+  {
+    "name": "Mastercard",
+    "evidenceUrl": "https://careers.mastercard.com/us/en/pune-india",
+    "source": "Official employer careers",
+    "region": "Pune",
+    "careerUrl": "https://careers.mastercard.com/us/en/pune-india"
+  },
+  {
+    "name": "Microsoft",
+    "evidenceUrl": "https://careers.microsoft.com/v2/global/en/locations/hyderabad.html",
+    "source": "Official employer careers",
+    "region": "Hyderabad",
+    "careerUrl": "https://careers.microsoft.com/v2/global/en/locations/hyderabad.html"
+  },
+  {
+    "name": "NatWest Group",
+    "evidenceUrl": "https://jobs.natwestgroup.com/search/technology-infrastructure-solutions/jobs/in/country/india",
+    "source": "Official employer careers",
+    "region": "Gurugram",
+    "careerUrl": "https://jobs.natwestgroup.com/search/technology-infrastructure-solutions/jobs/in/country/india"
+  },
+  {
+    "name": "NVIDIA",
+    "evidenceUrl": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/India-Bengaluru/Senior-System-Software-Engineer_JR2028433",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite"
+  },
+  {
+    "name": "Oracle",
+    "evidenceUrl": "https://careers.oracle.com/en/sites/jobsearch/job/348283",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://careers.oracle.com/en/sites/jobsearch/jobs?location=India&mode=location"
+  },
+  {
+    "name": "Persistent Systems",
+    "evidenceUrl": "https://careers.persistent.com/jobview/programmer-dev-india-pune-2026102816113938",
+    "source": "Official employer careers",
+    "region": "Pune",
+    "careerUrl": "https://careers.persistent.com/jobslist"
+  },
+  {
+    "name": "PhonePe",
+    "evidenceUrl": "https://www.phonepe.com/careers/job-openings/",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://www.phonepe.com/careers/job-openings/"
+  },
+  {
+    "name": "Qualcomm",
+    "evidenceUrl": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External/job/Sr-Engineer_3093573",
+    "source": "Official employer careers",
+    "region": "Hyderabad",
+    "careerUrl": "https://qualcomm.wd12.myworkdayjobs.com/en-US/External"
+  },
+  {
+    "name": "Quest Global",
+    "evidenceUrl": "https://careers.quest-global.com/global/en/job/P-123211/C-WPF-Software-Engineer",
+    "source": "Official employer careers",
+    "region": "Thiruvananthapuram",
+    "careerUrl": "https://careers.quest-global.com/global/en/search-results"
+  },
+  {
+    "name": "Salesforce",
+    "evidenceUrl": "https://careers.salesforce.com/en/jobs/jr318187/salesforceagentforce-developer-software-engineering-mts/",
+    "source": "Official employer careers",
+    "region": "Hyderabad",
+    "careerUrl": "https://careers.salesforce.com/en/jobs/"
+  },
+  {
+    "name": "SAP",
+    "evidenceUrl": "https://jobs.sap.com/en/jobs/?location=Bengaluru",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://jobs.sap.com/en/jobs/?location=Bengaluru"
+  },
+  {
+    "name": "Standard Chartered",
+    "evidenceUrl": "https://jobs.standardchartered.com/job/Bangalore-Lead-Software-Engineer/64381-en_GB/",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://jobs.standardchartered.com/search/"
+  },
+  {
+    "name": "Tata Consultancy Services",
+    "evidenceUrl": "https://www.tcs.com/careers/india/rebegin-job-codes",
+    "source": "Official employer careers",
+    "region": "India",
+    "careerUrl": "https://ibegin.tcsapps.com/"
+  },
+  {
+    "name": "UST",
+    "evidenceUrl": "https://www.ust.com/en/who-we-are/ust-newsroom/ust-to-add-8-000-staff-in-india---sajan-pillai-speaks-to-economic-times",
+    "source": "Official employer careers",
+    "region": "Thiruvananthapuram",
+    "careerUrl": "https://www.ust.com/en/careers"
+  },
+  {
+    "name": "Visa",
+    "evidenceUrl": "https://visa.wd5.myworkdayjobs.com/en-US/visa/job/IN---Bengaluru-India/Sr-Software-Engineer_REF078405W",
+    "source": "Official employer careers",
+    "region": "Bengaluru",
+    "careerUrl": "https://visa.wd5.myworkdayjobs.com/en-US/visa"
+  },
+  {
+    "name": "Wells Fargo",
+    "evidenceUrl": "https://www.wellsfargojobs.com/en/jobs/r-586124/senior-specialty-software-engineer-gen-ai/",
+    "source": "Official employer careers",
+    "region": "Hyderabad",
+    "careerUrl": "https://www.wellsfargojobs.com/en/jobs/"
+  },
+  {
+    "name": "Wipro",
+    "evidenceUrl": "https://careers.wipro.com/job/AI-ENGINEER-L1/217182-en_US/",
+    "source": "Official employer careers",
+    "region": "Hyderabad",
+    "careerUrl": "https://careers.wipro.com/search/"
+  },
+  {
+    "name": "YASH Technologies",
+    "evidenceUrl": "https://careers.yash.com/go/Software-Development/4641910/?locale=en_US",
+    "source": "Official employer careers",
+    "region": "Indore",
+    "careerUrl": "https://careers.yash.com/go/Software-Development/4641910/?locale=en_US"
+  }
+]

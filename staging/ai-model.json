@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-29",
+  "model": "alibaba/qwen3.7-flash",
+  "reasoning": "none",
+  "source": "https://ai-gateway.vercel.sh/v1/models",
+  "listedUsdPerMillionTokens": {
+    "input": 0.03,
+    "output": 0.13,
+    "contextTier": "under 32000 input tokens"
+  },
+  "structuredOutput": true,
+  "liveQualityVerification": {
+    "passed": true,
+    "scope": [
+      "deployed resume extraction",
+      "profile persistence and review rendering",
+      "direct service source-backed tailoring"
+    ],
+    "data": "synthetic separate test account; no user profile edits; no QA job records"
+  },
+  "automaticPremiumFallback": false
+}

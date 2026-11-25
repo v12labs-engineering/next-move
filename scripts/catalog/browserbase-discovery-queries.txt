@@ -1,0 +1,8 @@
+# Public software-role/country segments. No candidate identities or resume text.
+# Historical initial pilot. Use --worldwide --batch N for the full country plan.
+site:myworkdayjobs.com "software engineer" "India"
+site:jobs.smartrecruiters.com "software engineer" "India"
+site:myworkdayjobs.com "software engineer" "Singapore"
+site:jobs.smartrecruiters.com "software engineer" "Singapore"
+"software engineering" "India" "careers" -site:linkedin.com -site:indeed.com
+"software engineering" "Singapore" "careers" -site:linkedin.com -site:indeed.com

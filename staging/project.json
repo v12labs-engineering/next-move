@@ -1,0 +1,17 @@
+{
+  "environment": "staging",
+  "vercel": {
+    "projectId": "prj_y2XdyM0PSbTvcLIT70cX9pKTz6CE",
+    "projectName": "job-search",
+    "teamId": "team_xP5ofTY8NOOv2tFfvu6RJrBL",
+    "teamSlug": "v12labs-projects"
+  },
+  "supabase": {
+    "projectRef": "zcaqbiejkvgqxsbrncty",
+    "projectName": "job-search-staging",
+    "region": "ap-northeast-2",
+    "organizationId": "xrjithtopnfnejdnekrw",
+    "cliVersion": "2.122.0"
+  },
+  "appUrl": "https://job-search-chi-amber.vercel.app"
+}

@@ -1,0 +1,10 @@
+# Observed public employer boards, checked 2026-11-17. Candidates only.
+# Importing links does not validate, activate, or publish jobs.
+# Some providers redirect their tenant host to an employer custom domain;
+# preserve refusals for review rather than silently broadening allowed hosts.
+https://causeway-1588594217.teamtailor.com
+https://celebrus.teamtailor.com
+https://graviteetopcoltd.teamtailor.com
+https://etraveligroup-tripstack.teamtailor.com
+https://cuculus-gmbh.jobs.personio.com
+https://tradetracker.jobs.personio.com

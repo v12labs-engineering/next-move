@@ -1,0 +1,7 @@
+{
+  "framework": "fastapi",
+  "regions": ["icn1"],
+  "functions": {
+    "server.py": { "maxDuration": 800 }
+  }
+}

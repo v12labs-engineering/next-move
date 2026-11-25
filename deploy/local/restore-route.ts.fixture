@@ -1,0 +1,75 @@
+// Copied into the app only by the local Dockerfile. The gateway blocks this route.
+import { createHook } from "workflow"
+import { getHookByToken, getRun, resumeHook, start } from "workflow/api"
+import { HookNotFoundError } from "workflow/errors"
+import { supabaseServerClient } from "@/lib/server/supabase-server"
+
+async function submitSyntheticApplication(token: string, email: string) {
+  "use step"
+  const { data, error } = await supabaseServerClient()
+    .storage.from("restore-rehearsal")
+    .download(`${token}.docx`)
+  if (error) throw error
+
+  const form = new FormData()
+  form.set("name", "Synthetic Candidate")
+  form.set("email", email)
+  form.set("authorization", "Yes")
+  form.set("referral", "")
+  form.set("resume", data, "synthetic.docx")
+  const response = await fetch(
+    `http://127.0.0.1:3000/api/application-test/${token}`,
+    { method: "POST", body: form }
+  )
+  const body = await response.text()
+  if (!response.ok || !body.includes("Thank you for applying"))
+    throw new Error(
+      `Synthetic receiver rejected submission (${response.status})`
+    )
+  return response.status
+}
+
+async function syntheticApplication(token: string, email: string) {
+  "use workflow"
+  using approval = createHook<{ approved: boolean }>({ token })
+  if ((await approval).approved)
+    return await submitSyntheticApplication(token, email)
+  return 0
+}
+
+export async function POST(request: Request) {
+  const { action, token, email, runId } = await request.json()
+  switch (action) {
+    case "start":
+      return Response.json({
+        runId: (await start(syntheticApplication, [token, email])).runId,
+      })
+    case "hook":
+      try {
+        return Response.json({ runId: (await getHookByToken(token)).runId })
+      } catch (error) {
+        if (HookNotFoundError.is(error))
+          return new Response(null, { status: 404 })
+        throw error
+      }
+    case "resume":
+      try {
+        await resumeHook(token, { approved: true })
+        return Response.json({ resumed: true })
+      } catch (error) {
+        if (HookNotFoundError.is(error))
+          return new Response(null, { status: 404 })
+        throw error
+      }
+    case "status": {
+      const run = getRun(runId)
+      const status = await run.status
+      return Response.json({
+        status,
+        result: status === "completed" ? await run.returnValue : undefined,
+      })
+    }
+    default:
+      return new Response(null, { status: 400 })
+  }
+}

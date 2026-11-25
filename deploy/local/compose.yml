@@ -1,0 +1,344 @@
+name: job-search
+
+x-logging: &logging
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: "3"
+
+# Probe quickly while starting, then every 30s.
+x-healthcheck: &healthcheck
+  interval: 30s
+  timeout: 3s
+  retries: 3
+  start_period: 120s
+  start_interval: 2s
+
+x-catalog-env: &catalog-env
+  NEXT_PUBLIC_SUPABASE_URL: ${LOCAL_URL:?Run deploy/local/init.mjs}
+  SUPABASE_SERVICE_ROLE_KEY: ${LOCAL_SERVICE_KEY:?Run deploy/local/init.mjs}
+  CRON_SECRET: ${LOCAL_CRON_SECRET:-}
+  CATALOG_CONTENT_ENABLED: "true"
+  CATALOG_DATABASE_BUDGET_BYTES: ${LOCAL_CATALOG_BUDGET_BYTES:-21474836480}
+
+services:
+  db:
+    <<: *logging
+    image: supabase/postgres:17.6.1.136
+    restart: unless-stopped
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: ${LOCAL_POSTGRES_PASSWORD:?Run deploy/local/init.mjs}
+      WORKFLOW_PASSWORD: ${LOCAL_WORKFLOW_PASSWORD:?Run deploy/local/init.mjs}
+    healthcheck:
+      <<: *healthcheck
+      test: ["CMD", "pg_isready", "-h", "127.0.0.1", "-U", "postgres", "-d", "postgres"]
+    stop_grace_period: 60s
+    volumes:
+      - database:/var/lib/postgresql/data
+      - db-config:/etc/postgresql-custom
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-scripts/99-job-search.sql:ro
+
+  mail:
+    <<: *logging
+    image: axllent/mailpit:v1.32.0
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3303:8025"
+
+  auth:
+    <<: *logging
+    image: supabase/gotrue:v2.197.0
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      API_EXTERNAL_URL: ${LOCAL_URL:?Run deploy/local/init.mjs}
+      GOTRUE_API_HOST: 0.0.0.0
+      GOTRUE_API_PORT: 9999
+      GOTRUE_DB_DRIVER: postgres
+      GOTRUE_DB_DATABASE_URL: postgres://supabase_auth_admin:${LOCAL_POSTGRES_PASSWORD:?Run deploy/local/init.mjs}@db:5432/postgres
+      GOTRUE_SITE_URL: ${LOCAL_URL:?Run deploy/local/init.mjs}
+      GOTRUE_DISABLE_SIGNUP: "false"
+      GOTRUE_EXTERNAL_EMAIL_ENABLED: "true"
+      GOTRUE_JWT_SECRET: ${LOCAL_JWT_SECRET:?Run deploy/local/init.mjs}
+      GOTRUE_JWT_ADMIN_ROLES: service_role
+      GOTRUE_JWT_AUD: authenticated
+      GOTRUE_JWT_DEFAULT_GROUP_NAME: authenticated
+      GOTRUE_JWT_EXP: 3600
+      GOTRUE_JWT_ISSUER: ${LOCAL_URL:?Run deploy/local/init.mjs}
+      GOTRUE_SMTP_HOST: mail
+      GOTRUE_SMTP_PORT: 1025
+      GOTRUE_SMTP_ADMIN_EMAIL: job-search@example.test
+      GOTRUE_MAILER_URLPATHS_CONFIRMATION: /auth/v1/verify
+      GOTRUE_MAILER_URLPATHS_RECOVERY: /auth/v1/verify
+      GOTRUE_MAILER_URLPATHS_INVITE: /auth/v1/verify
+      GOTRUE_MAILER_URLPATHS_EMAIL_CHANGE: /auth/v1/verify
+    healthcheck:
+      <<: *healthcheck
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:9999/health"]
+
+  rest:
+    <<: *logging
+    image: postgrest/postgrest:v14.18
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PGRST_DB_URI: postgres://authenticator:${LOCAL_POSTGRES_PASSWORD:?Run deploy/local/init.mjs}@db:5432/postgres
+      PGRST_DB_SCHEMAS: public
+      PGRST_DB_ANON_ROLE: anon
+      PGRST_DB_USE_LEGACY_GUCS: "false"
+      PGRST_JWT_SECRET: ${LOCAL_JWT_SECRET:?Run deploy/local/init.mjs}
+      PGRST_ADMIN_SERVER_PORT: 3001
+      PGRST_ADMIN_SERVER_HOST: localhost
+    healthcheck:
+      <<: *healthcheck
+      test: ["CMD", "postgrest", "--ready"]
+
+  storage:
+    <<: *logging
+    image: supabase/storage-api:v1.89.12
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      rest:
+        condition: service_healthy
+    environment:
+      ANON_KEY: ${LOCAL_ANON_KEY:?Run deploy/local/init.mjs}
+      SERVICE_KEY: ${LOCAL_SERVICE_KEY:?Run deploy/local/init.mjs}
+      AUTH_JWT_SECRET: ${LOCAL_JWT_SECRET:?Run deploy/local/init.mjs}
+      POSTGREST_URL: http://rest:3000
+      DATABASE_URL: postgres://supabase_storage_admin:${LOCAL_POSTGRES_PASSWORD:?Run deploy/local/init.mjs}@db:5432/postgres
+      STORAGE_PUBLIC_URL: ${LOCAL_URL:?Run deploy/local/init.mjs}
+      FILE_SIZE_LIMIT: 52428800
+      STORAGE_BACKEND: file
+      GLOBAL_S3_BUCKET: local
+      FILE_STORAGE_BACKEND_PATH: /var/lib/storage
+      TENANT_ID: local
+      REGION: local
+      ENABLE_IMAGE_TRANSFORMATION: "false"
+    healthcheck:
+      <<: *healthcheck
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:5000/status"]
+    volumes:
+      - storage:/var/lib/storage
+
+  migrations:
+    <<: *logging
+    image: supabase/postgres:17.6.1.136
+    depends_on:
+      auth:
+        condition: service_healthy
+      storage:
+        condition: service_healthy
+    environment:
+      PGHOST: db
+      PGUSER: postgres
+      PGDATABASE: postgres
+      PGPASSWORD: ${LOCAL_POSTGRES_PASSWORD:?Run deploy/local/init.mjs}
+    entrypoint: ["/bin/sh", "/local/migrate.sh"]
+    volumes:
+      - ./migrate.sh:/local/migrate.sh:ro
+      - ./ai-allowance.sql:/local/ai-allowance.sql:ro
+      - ../../supabase/migrations:/migrations:ro
+
+  gateway:
+    <<: *logging
+    image: nginx:1.28-alpine
+    restart: unless-stopped
+    depends_on:
+      migrations:
+        condition: service_completed_successfully
+    ports:
+      - "127.0.0.1:3302:3302"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
+  workflow-setup:
+    <<: *logging
+    image: job-search-local:dev
+    pull_policy: never
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      WORKFLOW_POSTGRES_URL: postgres://workflow:${LOCAL_WORKFLOW_PASSWORD:?Run deploy/local/init.mjs}@db:5432/workflow
+    command: ["node", "node_modules/@workflow/world-postgres/bin/setup.js"]
+
+  app:
+    <<: *logging
+    image: job-search-local:dev
+    restart: unless-stopped
+    init: true
+    mem_limit: 4g
+    build:
+      context: ../..
+      dockerfile: deploy/local/Dockerfile
+      args:
+        NEXT_PUBLIC_SUPABASE_URL: ${LOCAL_URL:?Run deploy/local/init.mjs}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${LOCAL_ANON_KEY:?Run deploy/local/init.mjs}
+    depends_on:
+      gateway:
+        condition: service_started
+      workflow-setup:
+        condition: service_completed_successfully
+    network_mode: service:gateway
+    environment:
+      <<: *catalog-env
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${LOCAL_ANON_KEY:?Run deploy/local/init.mjs}
+      APP_PUBLIC_ORIGIN: ${LOCAL_URL:?Run deploy/local/init.mjs}
+      CATALOG_TASK_SCHEDULER_ENABLED: "true"
+      CATALOG_FIRECRAWL_LOCAL_URL: http://127.0.0.1:13983
+      CATALOG_SOURCE_FRESHNESS_MINUTES: "55"
+      CATALOG_CONCURRENCY: ${LOCAL_CATALOG_CONCURRENCY:-12}
+      AUTOMATIC_DISCOVERY_ENABLED: ${LOCAL_AUTOMATIC_DISCOVERY_ENABLED:-true}
+      SOURCE_DISCOVERY_BATCH_SIZE: ${LOCAL_SOURCE_DISCOVERY_BATCH_SIZE:-50}
+      ADZUNA_APP_ID: ${LOCAL_ADZUNA_APP_ID:-}
+      ADZUNA_APP_KEY: ${LOCAL_ADZUNA_APP_KEY:-}
+      TAILORING_OLLAMA_MODEL: ${LOCAL_OLLAMA_MODEL:-}
+      APPLICATION_BROWSER_PROVIDER: ${LOCAL_APPLICATION_BROWSER_PROVIDER:-}
+      BOAT_API_KEY: ${LOCAL_BOAT_API_KEY:-}
+      BROWSER_USE_BASE_URL: ${LOCAL_BROWSER_USE_BASE_URL:-}
+      BROWSER_USE_MODEL: ${LOCAL_BROWSER_USE_MODEL:-}
+      BROWSER_USE_API_KEY: ${LOCAL_BROWSER_USE_API_KEY:-}
+      APP_ENV: staging
+      APPLICATION_TEST_ORIGIN: http://127.0.0.1:3302
+      WORKFLOW_TARGET_WORLD: "@workflow/world-postgres"
+      WORKFLOW_POSTGRES_URL: postgres://workflow:${LOCAL_WORKFLOW_PASSWORD:?Run deploy/local/init.mjs}@db:5432/workflow
+      WORKFLOW_POSTGRES_WORKER_CONCURRENCY: ${LOCAL_WORKFLOW_WORKER_CONCURRENCY:-8}
+      # Recover abandoned deliveries after a hard exit, including older runs
+      # that use the shared queue. Live deliveries renew their locks.
+      WORKFLOW_POSTGRES_JOB_LOCK_STALE_SECONDS: "120"
+      WORKFLOW_LOCAL_BASE_URL: http://127.0.0.1:3000
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3302/sign-in').then(r => { if (!r.ok) process.exit(1) }).catch(() => process.exit(1))"]
+      <<: *healthcheck
+      timeout: 10s
+      start_period: 180s
+    stop_grace_period: 60s
+
+  catalog-scheduler:
+    <<: *logging
+    image: job-search-local:catalog-scheduler
+    build:
+      context: ../..
+      dockerfile: deploy/local/Dockerfile
+      target: catalog_scheduler
+    profiles: [catalog-schedule]
+    depends_on:
+      app:
+        condition: service_healthy
+    network_mode: service:gateway
+    restart: unless-stopped
+    # crond is otherwise PID 1 and never reaps its timeout(1) children.
+    init: true
+    environment:
+      <<: *catalog-env
+      INDIA_REGISTRY_ENABLED: ${LOCAL_INDIA_REGISTRY_ENABLED:-false}
+      INDIA_REGISTRY_WEBSITE_BATCH: ${LOCAL_INDIA_REGISTRY_WEBSITE_BATCH:-500}
+      INDIA_REGISTRY_DOMAIN_BATCH: ${LOCAL_INDIA_REGISTRY_DOMAIN_BATCH:-600}
+      INDIA_REGISTRY_CAREERS_BATCH: ${LOCAL_INDIA_REGISTRY_CAREERS_BATCH:-5000}
+      INDIA_REGISTRY_MAP_BATCH: ${LOCAL_INDIA_REGISTRY_MAP_BATCH:-24}
+      PGHOST: db
+      PGUSER: postgres
+      PGPASSWORD: ${LOCAL_POSTGRES_PASSWORD:?Run deploy/local/init.mjs}
+      CATALOG_SCHEDULER_STATE_FILE: /var/lib/catalog-scheduler/state.json
+    volumes:
+      - ./catalog.crontab:/local/catalog.crontab:ro
+      - ./registry-cron.sh:/local/registry-cron.sh:ro
+      - catalog-scheduler-state:/var/lib/catalog-scheduler
+    healthcheck:
+      test: ["CMD", "node", "/app/scripts/catalog/local-catalog-tick.mjs", "--health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 60s
+      retries: 3
+    command:
+      - /bin/sh
+      - -ec
+      - |
+        : "$${CRON_SECRET:?Run node deploy/local/init.mjs}"
+        cp /local/catalog.crontab /etc/crontabs/root
+        chmod 600 /etc/crontabs/root
+        node /app/scripts/catalog/local-catalog-tick.mjs || true
+        exec crond -f -d 8 -c /etc/crontabs
+
+  catalog-firecrawl:
+    <<: *logging
+    image: job-search-local:catalog-scheduler
+    profiles: [catalog-schedule]
+    depends_on:
+      gateway:
+        condition: service_started
+        restart: true
+    network_mode: service:gateway
+    restart: unless-stopped
+    # Chromium renders untrusted pages. Docker's default seccomp profile blocks
+    # the user namespaces its sandbox needs, so contain the process instead:
+    # no root, no capabilities, no privilege gain, no secrets, read-only image.
+    user: node
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    read_only: true
+    tmpfs: [/tmp]
+    # Bound Chromium so a leak cannot push the whole VM into swap.
+    init: true
+    mem_limit: 3g
+    memswap_limit: 3g
+    pids_limit: 1024
+    environment:
+      HOME: /tmp
+      CHROMIUM_USER_FLAGS: "--no-sandbox --disable-dev-shm-usage"
+      FIRECRAWL_CLOUD: "off"
+      FIRECRAWL_LOCAL_BROWSER: "auto"
+      FIRECRAWL_LOCAL_ALLOW_PRIVATE: "false"
+      FIRECRAWL_LOCAL_HOME: /tmp/catalog-firecrawl
+    # Firecrawl keeps one Chromium and opens a tab per render; tabs leak and
+    # a dead browser is never relaunched. Exit (restart policy recycles the
+    # container) when Chromium bloats or disappears after having started.
+    command:
+      - /bin/sh
+      - -c
+      - |
+        firecrawl-local serve --port 13983 --user-agent JobSearchCatalog/1.0 &
+        server=$$!
+        started=0
+        while sleep 30; do
+          kill -0 "$$server" 2>/dev/null || exit 1
+          # Timed-out renders leave their tab running. Normal load holds 6-11
+          # renderers (8 scrapes in flight plus spare processes); 20+ is a leak.
+          n=$$(ps -o stat,args | awk '$$1 !~ /Z/ && /--type=renderer/' | wc -l)
+          browser=$$(ps -o ppid,stat,comm | awk -v p="$$server" '$$1 == p && $$2 !~ /Z/ && $$3 ~ /^chrom/' | wc -l)
+          [ "$$browser" -gt 0 ] && started=1
+          if [ "$$n" -gt 20 ] || { [ "$$started" = 1 ] && [ "$$browser" = 0 ]; }; then
+            echo "recycling: $$n chromium renderers" >&2
+            exit 1
+          fi
+        done
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-T", "2", "-O", "/dev/null", "http://127.0.0.1:13983/health"]
+      interval: 20s
+      timeout: 4s
+      retries: 3
+
+  archive:
+    <<: *logging
+    image: alpine:3.22
+    profiles: [backup]
+    network_mode: none
+    volumes:
+      - database:/snapshot/database
+      - db-config:/snapshot/db-config
+      - storage:/snapshot/storage
+
+volumes:
+  database:
+  db-config:
+  storage:
+  catalog-scheduler-state:

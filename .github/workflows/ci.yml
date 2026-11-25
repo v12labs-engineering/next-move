@@ -1,0 +1,48 @@
+name: Quality
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Non-secret placeholders: smoke checks never sign in or contact a DB.
+      NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ci-placeholder-no-real-key
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npx playwright-core install --with-deps chromium
+      - run: npm test
+      - run: node --import tsx scripts/verify/verify-native-challenge.mts
+      - run: npm run build
+      - name: Verify anonymous access protections
+        run: |
+          npm run start > "$RUNNER_TEMP/job-search-server.log" 2>&1 &
+          for attempt in {1..30}; do
+            if curl --silent --fail http://localhost:3002/sign-in > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run smoke:auth
+      - run: npm audit --omit=dev --audit-level=high
+  browser-worker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Test the deployed Python worker against its pinned SDK
+        run: |
+          python3 -m venv /tmp/application-worker-tests
+          /tmp/application-worker-tests/bin/pip install -r workers/browser-use/requirements.txt
+          /tmp/application-worker-tests/bin/python -m unittest discover -s workers/browser-use -p 'test_*.py'

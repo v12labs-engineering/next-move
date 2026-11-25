@@ -1,0 +1,77 @@
+-- Read availability from the existing covering index instead of wide listing heaps.
+-- Keep catalogue/status lookups bounded to the authenticated account score IDs.
+-- Plan account/generation parameters afresh, including after a cold build.
+create or replace function public.read_account_matches(p_filters jsonb default '{}') returns jsonb
+language plpgsql stable security definer set search_path='' set plan_cache_mode='force_custom_plan' as $$
+declare u uuid:=auth.uid(); s public.account_match_state; v integer; r bigint; result jsonb;
+  lim integer:=least(200,greatest(1,coalesce((p_filters->>'limit')::integer,25)));
+  off integer:=greatest(0,coalesce((p_filters->>'offset')::integer,0));
+begin
+  if u is null then raise exception 'Authentication required'; end if;
+  select version into v from public.account_profiles where user_id=u;
+  if v is null then raise exception 'Complete your profile first'; end if;
+  select * into s from public.account_match_state where user_id=u;
+  if p_filters->>'generation' is not null and (p_filters->>'generation')::uuid is distinct from s.generation then off:=0; end if;
+  select revision into r from public.catalog_match_revision;
+  with owned_scores as materialized (
+    select m.job,m.score,m.job_id,m.country from public.account_match_jobs m
+    where m.user_id=u and m.generation=s.generation and s.profile_version=v
+  ), scored as materialized (
+    select m.job || jsonb_build_object('status',coalesce(a.status,'new'),'isActive',coalesce(c.is_active,false),
+      'lastCheckedAt',coalesce(c.last_checked_at,(m.job->>'lastCheckedAt')::timestamptz)) as job,
+      m.score,m.job_id,m.country,coalesce(a.status,'new') as status,
+      min((m.job->>'seenAt')::timestamptz) over(partition by m.job->>'url') as first_seen,
+      coalesce(c.is_active and c.last_checked_at>=now()-interval '7 days',false) as active
+    from owned_scores m
+    left join lateral (
+      -- Use the existing covering active-country/cursor index; no wide listing
+      -- heap read is needed for availability across the complete match set.
+      select true as is_active,j.last_checked_at from public.job_catalog j
+      where j.country=m.country and j.id=m.job_id and j.is_active limit 1
+    ) c on true
+    left join lateral (
+      select a.status from public.account_job_states a
+      where a.user_id=u and a.job_id=m.job_id limit 1
+    ) a on true
+  ), filtered as materialized (
+    select * from scored
+    where (coalesce(p_filters->>'country','all')='all' or country=p_filters->>'country')
+      and (coalesce(p_filters->>'view','jobs')='all'
+        or (p_filters->>'view'='saved' and status<>'new')
+        or (coalesce(p_filters->>'view','jobs')='jobs'
+          and country in(select country from public.account_countries where user_id=u)
+          and coalesce((job->'match'->>'relevant')::boolean,true)
+          and (coalesce((p_filters->>'hidden')::boolean,false) or status not in ('applied','dismissed'))
+          and (status<>'new' or (active and coalesce((job->'match'->>case when coalesce((p_filters->>'strict')::boolean,false) then 'eligible' else 'reviewable' end)::boolean,false)))))
+      and (p_filters->>'since' is null or first_seen>=(p_filters->>'since')::timestamptz)
+      and (coalesce(p_filters->>'query','')='' or strpos(lower(concat_ws(' ',job->>'title',job->>'company',job->>'country',job->>'city')),lower(p_filters->>'query'))>0)
+      and (coalesce(p_filters->>'visa','all')='all' or job->>'visaSignal'=p_filters->>'visa'
+        or coalesce(p_filters->'visaExempt','[]') ? country)
+  ), variants as (
+    select *,row_number() over(partition by job->>'url' order by (status<>'new') desc,
+      coalesce((job->'match'->>'eligible')::boolean,false) desc,
+      coalesce((job->'match'->>'reviewable')::boolean,false) desc,score desc,job_id) as variant
+    from filtered
+  ), deduplicated as materialized (
+    select * from variants where variant=1
+  ), ordered as (
+    select *,row_number() over(order by
+      case when p_filters->>'sort'='newest' then (job->>'seenAt')::timestamptz end desc nulls last,
+      coalesce((job->'match'->>'eligible')::boolean,false) desc,score desc,job_id) as position
+    from deduplicated
+  ), page as (select * from ordered order by position limit lim offset off)
+  select jsonb_build_object('generation',s.generation,'jobs',coalesce((select jsonb_agg(job order by position) from page),'[]'),
+    'total',(select count(*) from deduplicated),'offset',off,'limit',lim,
+    'counts',jsonb_build_object('toReview',(select count(*) from deduplicated where status='new'),
+      'confirmed',(select count(*) from deduplicated where job->>'visaSignal'='confirmed' and not(coalesce(p_filters->'visaExempt','[]') ? country)),
+      'fresh',(select count(*) from deduplicated where (job->>'postedDate')::timestamptz>=now()-interval '3 days'),
+      'new',(select count(*) from scored where status='new' and active and country in(select country from public.account_countries where user_id=u)
+        and coalesce((job->'match'->>'reviewable')::boolean,false)))) into result;
+  return result || jsonb_build_object('catalog',case when s.profile_version=v then s.summary->'catalog' else null end,
+    'matching',jsonb_build_object('status',case when s.failed then 'failed' when s.token is not null and s.lease_until>now() then 'running'
+      when s.profile_version=v then 'ready' else 'pending' end,
+      'stale',s.profile_version is distinct from v or s.catalog_revision is distinct from r or s.computed_at is null or s.computed_at<now()-interval '15 minutes',
+      'computedAt',s.computed_at,'retryAt',s.retry_at));
+end $$;
+revoke all on function public.read_account_matches(jsonb) from public,anon;
+grant execute on function public.read_account_matches(jsonb) to authenticated;

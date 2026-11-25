@@ -1,0 +1,12 @@
+.git
+.env*
+.local-data
+.next*
+node_modules
+coverage
+.test-build
+tests
+docs
+staging
+supabase
+AGENTS.md

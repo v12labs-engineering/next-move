@@ -1,0 +1,325 @@
+[
+    {
+        "name": "AHEAD",
+        "source": "Local India catalog",
+        "careerUrl": "https://jobs.lever.co/thinkahead",
+        "evidenceUrl": "https://jobs.lever.co/thinkahead/f8be6807-403c-4073-bb1e-5ed5e16ca171"
+    },
+    {
+        "name": "Amazon",
+        "source": "Local India catalog",
+        "careerUrl": "https://www.amazon.jobs/en/search?normalized_country_code%5B%5D=IND&category%5B%5D=software-development&sort=recent",
+        "evidenceUrl": "https://www.amazon.jobs/en/jobs/10603416"
+    },
+    {
+        "name": "Appian",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/appian",
+        "evidenceUrl": "https://job-boards.greenhouse.io/appian/jobs/8318480"
+    },
+    {
+        "name": "Arista Networks",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/AristaNetworks",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/aristanetworks/744000160116794"
+    },
+    {
+        "name": "Bosch Group",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/BoschGroup",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/boschgroup/744000161786424"
+    },
+    {
+        "name": "Brady Corporation",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/BradyCorporation3",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/bradycorporation3/3743990016784936"
+    },
+    {
+        "name": "Brillio",
+        "source": "Local India catalog",
+        "careerUrl": "https://jobs.lever.co/brillio-2",
+        "evidenceUrl": "https://jobs.lever.co/brillio-2/2fb0b0bc-1e48-4a94-80c4-2c6ad54ce51f"
+    },
+    {
+        "name": "Capco",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/capco",
+        "evidenceUrl": "https://job-boards.greenhouse.io/capco/jobs/8354687"
+    },
+    {
+        "name": "Cin7",
+        "source": "Local India catalog",
+        "careerUrl": "https://jobs.lever.co/cin7",
+        "evidenceUrl": "https://jobs.lever.co/cin7/ef00f1ff-d6da-4b78-a8d5-dd033334d943"
+    },
+    {
+        "name": "Coinbase",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/coinbase",
+        "evidenceUrl": "https://www.coinbase.com/careers/positions/8325213?gh_jid=8325213"
+    },
+    {
+        "name": "ConnectWise",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/connectwise",
+        "evidenceUrl": "https://job-boards.greenhouse.io/connectwise/jobs/4751669005"
+    },
+    {
+        "name": "Databricks",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/databricks",
+        "evidenceUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8944097002"
+    },
+    {
+        "name": "Deliveroo",
+        "source": "Local India catalog",
+        "evidenceUrl": "https://job-boards.greenhouse.io/deliveroo/jobs/8311914"
+    },
+    {
+        "name": "DevRev",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/devrev",
+        "evidenceUrl": "https://job-boards.greenhouse.io/devrev/jobs/6166569004"
+    },
+    {
+        "name": "Druva",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/druva",
+        "evidenceUrl": "https://www.druva.com/why-druva/explore/careers/jobs/8814695002/?gh_jid=8814695002"
+    },
+    {
+        "name": "Endava",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/Endava",
+        "evidenceUrl": "https://careers.smartrecruiters.com/Endava"
+    },
+    {
+        "name": "Entrata",
+        "source": "Local India catalog",
+        "careerUrl": "https://jobs.lever.co/entrata",
+        "evidenceUrl": "https://jobs.lever.co/entrata/77571c85-f514-4e03-9427-abb295b48a91"
+    },
+    {
+        "name": "Eurofins",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/Eurofins",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/eurofins/744000161732359"
+    },
+    {
+        "name": "Everpure",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/purestorage",
+        "evidenceUrl": "https://job-boards.greenhouse.io/purestorage/jobs/8280658"
+    },
+    {
+        "name": "Experian",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/Experian",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/experian/744000161775309"
+    },
+    {
+        "name": "GitLab",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/gitlab",
+        "evidenceUrl": "https://job-boards.greenhouse.io/gitlab/jobs/8930224002"
+    },
+    {
+        "name": "Glean",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/gleanwork",
+        "evidenceUrl": "https://job-boards.greenhouse.io/gleanwork/jobs/4746981005"
+    },
+    {
+        "name": "H&M Group",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/HMGroup",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/hmgroup/744000161766119"
+    },
+    {
+        "name": "HighLevel",
+        "source": "Local India catalog",
+        "careerUrl": "https://jobs.lever.co/gohighlevel",
+        "evidenceUrl": "https://jobs.lever.co/gohighlevel/ec11cca8-6c38-4ab0-bf5d-7f1d20e3caee"
+    },
+    {
+        "name": "Horizontal Digital",
+        "source": "Local India catalog",
+        "careerUrl": "https://apply.workable.com/horizontal-digital",
+        "evidenceUrl": "https://apply.workable.com/j/02C6BCE303"
+    },
+    {
+        "name": "JumpCloud",
+        "source": "Local India catalog",
+        "careerUrl": "https://jobs.lever.co/jumpcloud",
+        "evidenceUrl": "https://jobs.lever.co/jumpcloud/70b35b11-8ce1-4eea-a9fd-44f30fe617f5"
+    },
+    {
+        "name": "Lifted, an Upwork Company",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/LiftedanUpworkCompany",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/liftedanupworkcompany/3743990016724306"
+    },
+    {
+        "name": "LinkedIn",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/LinkedIn3",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/linkedin3/744000159843468"
+    },
+    {
+        "name": "Loopio",
+        "source": "Local India catalog",
+        "careerUrl": "https://jobs.ashbyhq.com/loopio",
+        "evidenceUrl": "https://jobs.ashbyhq.com/loopio/28b76abd-b206-45cc-b23c-b09cb13c87e1"
+    },
+    {
+        "name": "Nagarro",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/Nagarro",
+        "evidenceUrl": "https://careers.smartrecruiters.com/Nagarro"
+    },
+    {
+        "name": "NEC Software Solutions",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/NECSWS",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/necsws/744000161775239"
+    },
+    {
+        "name": "Nielsen",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/TheNielsenCompany",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/thenielsencompany/3743990016815266"
+    },
+    {
+        "name": "NielsenIQ",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/NielsenIQ",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/nielseniq/744000161754269"
+    },
+    {
+        "name": "Okta",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/okta",
+        "evidenceUrl": "https://www.okta.com/company/careers/opportunity/8377182?gh_jid=8377182"
+    },
+    {
+        "name": "Perforce",
+        "source": "Local India catalog",
+        "careerUrl": "https://jobs.lever.co/perforce",
+        "evidenceUrl": "https://jobs.lever.co/perforce/d90e388f-2b25-40c7-9e60-92b478c5d6b5"
+    },
+    {
+        "name": "QAD",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/QADInc",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/qadinc/744000161774973"
+    },
+    {
+        "name": "Redwood Software",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/redwoodsoftware",
+        "evidenceUrl": "https://job-boards.greenhouse.io/redwoodsoftware/jobs/4467205009"
+    },
+    {
+        "name": "Rubrik",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/rubrik",
+        "evidenceUrl": "https://www.rubrik.com/company/careers/departments/job.8377184?gh_jid=8377184"
+    },
+    {
+        "name": "Sauce Labs",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/saucelabs",
+        "evidenceUrl": "https://job-boards.greenhouse.io/saucelabs/jobs/8303361"
+    },
+    {
+        "name": "ServiceNow",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/ServiceNow",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/servicenow/744000161772132"
+    },
+    {
+        "name": "ShyftLabs",
+        "source": "Local India catalog",
+        "careerUrl": "https://jobs.lever.co/shyftlabs",
+        "evidenceUrl": "https://jobs.lever.co/shyftlabs/75e1eb51-c562-4f01-a029-1a8823a16b4a"
+    },
+    {
+        "name": "Smart Working Solutions",
+        "source": "Local India catalog",
+        "careerUrl": "https://jobs.lever.co/smart-working-solutions",
+        "evidenceUrl": "https://jobs.lever.co/smart-working-solutions/ea7609d0-fbe7-443e-ae95-5e92f5d1939f"
+    },
+    {
+        "name": "SonicWall",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/sonicwall",
+        "evidenceUrl": "https://job-boards.greenhouse.io/sonicwall/jobs/8383017"
+    },
+    {
+        "name": "Sopra Steria",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/SopraSteria1",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/soprasteria1/744000161729309"
+    },
+    {
+        "name": "Sumo Logic",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/sumologic",
+        "evidenceUrl": "https://job-boards.greenhouse.io/sumologic/jobs/8353318"
+    },
+    {
+        "name": "Tech Holding",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/techholding",
+        "evidenceUrl": "https://job-boards.greenhouse.io/techholding/jobs/4746973005"
+    },
+    {
+        "name": "Tekion",
+        "source": "Local India catalog",
+        "careerUrl": "https://jobs.ashbyhq.com/tekion",
+        "evidenceUrl": "https://jobs.ashbyhq.com/Tekion/1dd9e4b3-c683-4c9a-9b02-0fc05b32cc37"
+    },
+    {
+        "name": "Turing",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/turing",
+        "evidenceUrl": "https://job-boards.greenhouse.io/turing/jobs/6235517004"
+    },
+    {
+        "name": "Twilio",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/twilio",
+        "evidenceUrl": "https://job-boards.greenhouse.io/twilio/jobs/8319442"
+    },
+    {
+        "name": "Version 1",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/Version1",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/version1/744000161779469"
+    },
+    {
+        "name": "Wabtec",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/Wabtec",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/wabtec/3743990016866886"
+    },
+    {
+        "name": "Western Digital",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/WesternDigital",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/westerndigital/744000157502119"
+    },
+    {
+        "name": "Xplor Technologies",
+        "source": "Local India catalog",
+        "careerUrl": "https://careers.smartrecruiters.com/Xplor",
+        "evidenceUrl": "https://jobs.smartrecruiters.com/xplor/744000158498160"
+    },
+    {
+        "name": "Zscaler",
+        "source": "Local India catalog",
+        "careerUrl": "https://job-boards.greenhouse.io/zscaler",
+        "evidenceUrl": "https://job-boards.greenhouse.io/zscaler/jobs/5267231007"
+    }
+]

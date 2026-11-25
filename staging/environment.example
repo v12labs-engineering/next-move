@@ -1,0 +1,30 @@
+# Copy to .env.staging.local (gitignored). Never reuse the private project's keys.
+# Optional: staging:auth management API helper only. CLI login is sufficient for migrations.
+SUPABASE_ACCESS_TOKEN=
+# Optional override; the pinned CLI normally brokers a temporary database login role.
+SUPABASE_DB_PASSWORD=
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+APP_ENV=staging
+TAILORING_BASE_URL=https://ai-gateway.vercel.sh/v1
+TAILORING_MODEL=
+TAILORING_REASONING=none
+TAILORING_API_KEY=
+APPLICATION_BROWSER_PROVIDER=browserbase
+APPLICATION_FORM_ENGINE=computer
+# Select a vision + tool-use model from the live AI Gateway model list.
+APPLICATION_COMPUTER_MODEL=
+APPLICATION_RECEIPT_MODEL=
+BROWSERBASE_API_KEY=
+BROWSERBASE_PROJECT_ID=
+APPLICATION_TEST_ORIGIN=https://job-search-staging.vercel.app
+AI_GATEWAY_API_KEY=
+# Add only when staging email delivery is configured and the owner approves it.
+STAGING_TEST_EMAIL=
+
+# At least 32 random characters; protects the scheduled catalogue refresh.
+CRON_SECRET=
+
+# Enable after migrations 202610300016/017 and checking shared capacity.
+ON_DEMAND_SEARCH_ENABLED=false

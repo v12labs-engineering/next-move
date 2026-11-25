@@ -1,0 +1,15 @@
+.git
+.vercel
+.next*
+.swc
+node_modules
+.env*
+**/.env*
+.local-data
+**/__pycache__
+**/.pytest_cache
+**/.venv
+coverage
+.test-build
+*.pem
+scripts/lib/*.tmp.mts

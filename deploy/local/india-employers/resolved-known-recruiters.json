@@ -1,0 +1,266 @@
+[
+  {
+    "name": "Accenture",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.accenture.com/en",
+    "website": "https://www.accenture.com/en"
+  },
+  {
+    "name": "AHEAD",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.ahead.com/",
+    "website": "https://www.ahead.com/"
+  },
+  {
+    "name": "Amazon",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.aboutamazon.in/",
+    "website": "https://www.aboutamazon.in/"
+  },
+  {
+    "name": "Appian",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://appian.com/",
+    "website": "https://appian.com/"
+  },
+  {
+    "name": "Apple",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.apple.com/",
+    "website": "https://www.apple.com/"
+  },
+  {
+    "name": "Barclays",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://home.barclays/",
+    "website": "https://home.barclays/"
+  },
+  {
+    "name": "BNY",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.bny.com/corporate/global/en.html",
+    "website": "https://www.bny.com/corporate/global/en.html"
+  },
+  {
+    "name": "Bosch Group",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.bosch.com/",
+    "website": "https://www.bosch.com/"
+  },
+  {
+    "name": "Brillio",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.brillio.com/",
+    "website": "https://www.brillio.com/"
+  },
+  {
+    "name": "C-DAC",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.cdac.in/",
+    "website": "https://www.cdac.in/"
+  },
+  {
+    "name": "Capco",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.capco.com/",
+    "website": "https://www.capco.com/"
+  },
+  {
+    "name": "Capgemini",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.capgemini.com/",
+    "website": "https://www.capgemini.com/"
+  },
+  {
+    "name": "Cisco",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.cisco.com/",
+    "website": "https://www.cisco.com/"
+  },
+  {
+    "name": "Citi",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.citigroup.com/global",
+    "website": "https://www.citigroup.com/global"
+  },
+  {
+    "name": "Cloudflare",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.cloudflare.com/",
+    "website": "https://www.cloudflare.com/"
+  },
+  {
+    "name": "Cognizant",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.cognizant.com/in/en",
+    "website": "https://www.cognizant.com/in/en"
+  },
+  {
+    "name": "Databricks",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.databricks.com/",
+    "website": "https://www.databricks.com/"
+  },
+  {
+    "name": "Eurofins",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.eurofins.com/en/",
+    "website": "https://www.eurofins.com/en/"
+  },
+  {
+    "name": "Experian",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.experian.com/",
+    "website": "https://www.experian.com/"
+  },
+  {
+    "name": "GitLab",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://about.gitlab.com/",
+    "website": "https://about.gitlab.com/"
+  },
+  {
+    "name": "GlobalLogic",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.globallogic.com/",
+    "website": "https://www.globallogic.com/"
+  },
+  {
+    "name": "Goldman Sachs",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.goldmansachs.com/",
+    "website": "https://www.goldmansachs.com/"
+  },
+  {
+    "name": "Google",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://about.google/",
+    "website": "https://about.google/"
+  },
+  {
+    "name": "HCLTech",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.hcltech.com/",
+    "website": "https://www.hcltech.com/"
+  },
+  {
+    "name": "HighLevel",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.gohighlevel.com/7658a9",
+    "website": "https://www.gohighlevel.com/7658a9"
+  },
+  {
+    "name": "HSBC",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.hsbc.com/",
+    "website": "https://www.hsbc.com/"
+  },
+  {
+    "name": "In Time Tec",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.intimetec.com/",
+    "website": "https://www.intimetec.com/"
+  },
+  {
+    "name": "Infosys",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.infosys.com/",
+    "website": "https://www.infosys.com/"
+  },
+  {
+    "name": "Intuit",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.intuit.com/",
+    "website": "https://www.intuit.com/"
+  },
+  {
+    "name": "JPMorgan Chase",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.jpmorganchase.com/",
+    "website": "https://www.jpmorganchase.com/"
+  },
+  {
+    "name": "Kovai.co",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.kovai.co/",
+    "website": "https://www.kovai.co/"
+  },
+  {
+    "name": "Microsoft",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.microsoft.com/en-in",
+    "website": "https://www.microsoft.com/en-in"
+  },
+  {
+    "name": "NatWest Group",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.natwestgroup.com/",
+    "website": "https://www.natwestgroup.com/"
+  },
+  {
+    "name": "NVIDIA",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.nvidia.com/en-in/",
+    "website": "https://www.nvidia.com/en-in/"
+  },
+  {
+    "name": "Okta",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.okta.com/",
+    "website": "https://www.okta.com/"
+  },
+  {
+    "name": "Perforce",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.perforce.com/",
+    "website": "https://www.perforce.com/"
+  },
+  {
+    "name": "Persistent Systems",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.persistent.com/",
+    "website": "https://www.persistent.com/"
+  },
+  {
+    "name": "PhonePe",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.phonepe.com/",
+    "website": "https://www.phonepe.com/"
+  },
+  {
+    "name": "QAD",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.qad.com/",
+    "website": "https://www.qad.com/"
+  },
+  {
+    "name": "Qualcomm",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.qualcomm.com/",
+    "website": "https://www.qualcomm.com/"
+  },
+  {
+    "name": "Salesforce",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.salesforce.com/in/?ir=1",
+    "website": "https://www.salesforce.com/in/?ir=1"
+  },
+  {
+    "name": "Standard Chartered",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.sc.com/",
+    "website": "https://www.sc.com/"
+  },
+  {
+    "name": "Wells Fargo",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.wellsfargo.com/",
+    "website": "https://www.wellsfargo.com/"
+  },
+  {
+    "name": "YASH Technologies",
+    "source": "Employer-branded website verified live (known recruiting employer)",
+    "evidenceUrl": "https://www.yash.com/",
+    "website": "https://www.yash.com/"
+  }
+]
